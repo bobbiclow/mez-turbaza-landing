@@ -17,6 +17,12 @@ const gallery = [
   'https://oxothik.ru/userimages/bases/preview/1390_5407.jpg',
 ]
 
+const offers = [
+  ['Рыбалка на озёрах Мец и Пудоро', 'от 4 500 ₽ / чел.'],
+  ['Семейный отдых с баней', 'от 5 500 ₽ / чел.'],
+  ['Охотничий тур с егерем', 'по запросу'],
+]
+
 function App() {
   const rootRef = useRef(null)
 
@@ -26,11 +32,11 @@ function App() {
       gsap.from('.hero-sub', { y: 24, opacity: 0, duration: 1, delay: 0.2, ease: 'power3.out' })
       gsap.utils.toArray('.reveal').forEach((el) => {
         gsap.from(el, {
-          y: 38,
+          y: 36,
           opacity: 0,
-          duration: 0.9,
+          duration: 0.8,
           ease: 'power2.out',
-          scrollTrigger: { trigger: el, start: 'top 85%' },
+          scrollTrigger: { trigger: el, start: 'top 86%' },
         })
       })
     }, rootRef)
@@ -42,34 +48,48 @@ function App() {
       <section className="hero" style={{ backgroundImage: `url(${heroBg})` }}>
         <div className="overlay" />
         <div className="container hero-content">
-          <p className="kicker">Тверская область · озеро Мец</p>
+          <p className="kicker">Тверская область · Вышневолоцкий район</p>
           <h1 className="hero-title">Турбаза «Мец»</h1>
-          <p className="hero-sub">Охота, рыбалка и отдых на природе. Живые выходные без городского шума.</p>
+          <p className="hero-sub">Современный отдых на природе: охота, рыбалка, баня, живые выходные без городского шума.</p>
           <div className="actions">
-            <a className="btn" href="tel:+79043562995">Позвонить: +7 (904) 356-29-95</a>
-            <a className="btn ghost" href="https://instagram.com/baza_otdyha_mez" target="_blank" rel="noreferrer">Instagram</a>
+            <a className="btn" href="tel:+79043562995">Позвонить</a>
+            <a className="btn ghost" href="#booking">Оставить заявку</a>
           </div>
         </div>
       </section>
 
-      <section className="section section-dark reveal" style={{ backgroundImage: `url(${secBg})` }}>
-        <div className="overlay soft" />
+      <section className="section reveal light-bg" style={{ backgroundImage: `url(${secBg})` }}>
         <div className="container">
-          <h2>Что есть на базе</h2>
+          <h2>Почему выбирают «Мец»</h2>
           <div className="grid three">
-            <article className="card"><h3>Охота</h3><p>Охотничьи туры с егерским сопровождением и организацией на месте.</p></article>
-            <article className="card"><h3>Рыбалка</h3><p>Озёра Мец и Пудоро, лодки, баня и природные маршруты.</p></article>
-            <article className="card"><h3>Отдых</h3><p>Бревенчатые домики, питание, семейные и корпоративные заезды.</p></article>
+            <article className="card glass"><h3>Природа</h3><p>Озёра, лес и тишина — место для перезагрузки, а не для суеты.</p></article>
+            <article className="card glass"><h3>Форматы отдыха</h3><p>Семья, друзья, корпоратив, охота и рыбалка — всё в одной локации.</p></article>
+            <article className="card glass"><h3>Прямой контакт</h3><p>Без агрегаторов и посредников — бронирование напрямую по телефону.</p></article>
           </div>
         </div>
       </section>
 
       <section className="section reveal">
         <div className="container">
-          <h2>Атмосфера места</h2>
+          <h2>Фото базы</h2>
           <div className="gallery">
             {gallery.map((src) => (
               <img key={src} src={src} alt="Турбаза Мец" loading="lazy" />
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="section reveal">
+        <div className="container">
+          <h2>Ориентир по стоимости</h2>
+          <p className="muted">Финальная цена зависит от сезона, состава группы и программы.</p>
+          <div className="grid three">
+            {offers.map(([name, price]) => (
+              <article key={name} className="card price">
+                <h3>{name}</h3>
+                <p className="price-tag">{price}</p>
+              </article>
             ))}
           </div>
         </div>
@@ -80,12 +100,13 @@ function App() {
           <article className="card">
             <h3>Как добраться</h3>
             <p>Тверская область, Вышневолоцкий район, деревня Гряды.</p>
-            <p>Маршрут: через Вышний Волочёк, поворот на Удомлю, далее по указателям к базе «Мец».</p>
+            <p>Через Вышний Волочёк, поворот на Удомлю, далее по указателям к базе.</p>
           </article>
-          <article className="card">
+          <article className="card" id="booking">
             <h3>Бронирование</h3>
-            <p>Лучший способ — прямой звонок. Уточни даты, формат отдыха и состав группы.</p>
-            <a className="btn" href="tel:+79043562995">Забронировать по телефону</a>
+            <p>Телефон: +7 (904) 356-29-95</p>
+            <p>Instagram: @baza_otdyha_mez</p>
+            <a className="btn" href="tel:+79043562995">Забронировать</a>
           </article>
         </div>
       </section>
